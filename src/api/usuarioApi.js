@@ -15,6 +15,38 @@ export async function searchUsuarios() {
 
 }
 
+export async function savehUsuarios(datos) {
+
+    let url = REACT_APP_API_URL + "usuarios"
+
+    const request = await fetch (url,{
+        method: 'POST',
+        headers: {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify (datos)
+    });
+
+    const respuesta = await request.text()
+    return respuesta
+}
+
+export async function buscarEmail(email) {
+
+    let url = REACT_APP_API_URL + "usuarios/email/" + email
+
+    const request = await fetch (url,{
+        method: 'GET',
+        headers: {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+        }
+    });
+
+    const respuesta = await request.text()
+    return respuesta
+}
 
 export async function authenticatedUser(email, password) {
 
@@ -33,7 +65,6 @@ export async function authenticatedUser(email, password) {
         body: JSON.stringify (datos)
     });
 
-
     const respuesta = await request.text()
 
     if(respuesta != 'fail'){
@@ -43,7 +74,7 @@ export async function authenticatedUser(email, password) {
         return respuesta
         
     } else {
-        let avisoContrasena = document.getElementById("avisoContrasena");
+        let avisoContrasena = document.getElementById("avisoContrasena")
         avisoContrasena.innerHTML = "El usuario o contraseña es incorrecto"
         return null
     }
