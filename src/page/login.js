@@ -1,9 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { useNavigate , Link} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import useUser from '../hooks/useUser'
 
 export default function Login() {
 
+    const [password, setPassword] = useState()
+    const [email, setEmail] = useState()
+    const navigate = useNavigate();
+    const { islogged, getToken, login } = useUser();
+ 
+
+    useEffect(() => {
+
+        validarToker()
+
+    }, [getToken]);
+
+    const validarToker = () => {
+        
+        if(getToken) { navigate('/usuario') }
+        
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await login(email, password)
+    }
 
     return (
 
@@ -17,22 +40,23 @@ export default function Login() {
                                 <div className="col-lg-6">
                                     <div className="p-5">
                                         <div className="text-center">
-                                            <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                            <h1 className="h4 text-gray-900 mb-4">¡Formulario de Login! {islogged} </h1>
                                         </div>
-                                        <form className="user">
+
+                                        <form className="user" onSubmit={handleSubmit}>
                                             <div className="form-group">
                                                 <input type="email" className="form-control form-control-user"
                                                     id="exampleInputEmail" aria-describedby="emailHelp"
-                                                    placeholder="Enter Email Address..."></input>
+                                                    placeholder="Enter Email Address..." onChange={({ target }) => setEmail(target.value)}></input>
                                             </div>
                                             <div className="form-group">
                                                 <input type="password" className="form-control form-control-user"
-                                                    id="exampleInputPassword" placeholder="Password" autoComplete=""></input>
+                                                    id="exampleInputPassword" placeholder="Password" autoComplete="" onChange={({ target }) => setPassword(target.value)}></input>
                                             </div>
-                                            <a href="index.html" className="btn btn-primary btn-user btn-block">
-                                                Login
-                                            </a>
+                                            <div className="aviso"><label className="avisoContrasena" id="avisoContrasena"></label></div>
+                                            <input type="submit" className="btn btn-primary btn-user btn-block" value="Login" />
                                         </form>
+
                                         <hr></hr>
                                         <div className="text-center">
                                             <Link to="../forgot">Forgot Password?</Link>
@@ -45,12 +69,10 @@ export default function Login() {
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
+
     )
 
 

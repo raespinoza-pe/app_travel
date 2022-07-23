@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
 
+    const registrarUsuario = () => {
+
+        let datos = {};
+        datos.nombre = document.getElementById('txtNombre').value;
+        datos.apellido = document.getElementById('txtApellido').value;
+        datos.email = document.getElementById('txtEmail').value;
+        datos.password = document.getElementById('txtPassword').value;
+        console.log(datos.nombre)
+
+    }
 
     return (
 
@@ -19,38 +29,33 @@ const Register = () => {
                                 <form className="user">
                                     <div className="form-group row">
                                         <div className="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="text" className="form-control form-control-user" id="exampleFirstName"
-                                                placeholder="First Name"></input>
+                                            <input type="text" className="form-control form-control-user" id="txtNombre"
+                                                placeholder="Nombre"></input>
                                         </div>
                                         <div className="col-sm-6">
-                                            <input type="text" className="form-control form-control-user" id="exampleLastName"
-                                                placeholder="Last Name"></input>
+                                            <input type="text" className="form-control form-control-user" id="txtApellido"
+                                                placeholder="Apellidos"></input>
                                         </div>
                                     </div>
+                                    <div className="aviso"><label className="avisoNomrbres" id="avisoNomrbres"></label></div>
                                     <div className="form-group">
-                                        <input type="email" className="form-control form-control-user" id="exampleInputEmail"
+                                        <input type="email" className="form-control form-control-user" id="txtEmail"
                                             placeholder="Email Address"></input>
                                     </div>
                                     <div className="form-group row">
                                         <div className="col-sm-6 mb-3 mb-sm-0">
                                             <input type="password" className="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password"></input>
+                                                id="txtPassword" placeholder="Password" autoComplete="true"></input>
                                         </div>
                                         <div className="col-sm-6">
                                             <input type="password" className="form-control form-control-user"
-                                                id="exampleRepeatPassword" placeholder="Repeat Password"></input>
+                                                id="txtValPassword" placeholder="Repeat Password" autoComplete="true"></input>
                                         </div>
                                     </div>
-                                    <a href="login.html" className="btn btn-primary btn-user btn-block">
+                                    <Link to="" onClick={registrarUsuario} className="btn btn-primary btn-user btn-block">
                                         Register Account
-                                    </a>
+                                    </Link>
                                     <hr></hr>
-                                    <a href="index.html" className="btn btn-google btn-user btn-block">
-                                        <i className="fab fa-google fa-fw"></i> Register with Google
-                                    </a>
-                                    <a href="index.html" className="btn btn-facebook btn-user btn-block">
-                                        <i className="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                    </a>
                                 </form>
                                 <hr></hr>
                                 <div className="text-center">
