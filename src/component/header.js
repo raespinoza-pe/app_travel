@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
+import { IoIosAirplane, IoIosGlobe, IoIosContact } from "react-icons/io"
 
 export default function Header() {
     return (
@@ -13,18 +14,17 @@ export default function Header() {
             </a>
             <hr className="sidebar-divider my-0"></hr>
             <li className="nav-item">
-                <Link to={'/'} className="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i className="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </Link>
-                <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div className="bg-white py-2 collapse-inner rounded">
-                        <h6 className="collapse-header">Custom Components:</h6>
-                        <Link to={'/'} className="collapse-item" href="buttons.html">Buttons</Link>
-                        <Link to={'/'} className="collapse-item" href="cards.html">Cards</Link>
-                    </div>
-                </div>
+
+                <Link to="" className="nav-link" href="charts.html">
+                <IoIosContact/>
+                <span> Perfil</span></Link>
+                <Link to="" className="nav-link" href="charts.html">
+                <IoIosAirplane/>
+                <span> Destinos</span></Link>
+                <Link to="" className="nav-link" href="charts.html">
+                <IoIosGlobe/>
+                <span> Lugares Turisticos</span></Link>
+                
             </li>
             <hr className="sidebar-divider d-none d-md-block" />
         </ul>

@@ -20,6 +20,19 @@ const Register = () => {
         datos.apellido = apellido
         datos.email = email
         datos.password = password
+
+        const nombres_file = nombre.split(' ')
+        const apellidos_file = apellido.split(' ')
+        let name_file = ""
+        nombres_file.forEach(element => {
+            name_file = name_file + element
+        });
+        apellidos_file.forEach(element => {
+            name_file = name_file + element
+        });
+
+        datos.username = name_file.toLowerCase()
+
         let valpassword = document.getElementById('txtValPassword').value
         let val = document.getElementById('avisoValidarContrasena')
 
@@ -30,15 +43,16 @@ const Register = () => {
 
         let existUsuario = await buscarEmail(datos.email);
 
-        if (existUsuario === "si") {
-            toast.error("El email ya se encuentra registrado, intente nuevamente")
-        } else if (existUsuario === "no") {
+        if (existUsuario === "no") {
             toast.success('Email registrado correctamente')
-            setTimeout(function(){ 
+            setTimeout(function () {
                 savehUsuarios(datos)
                 navigate("/login")
             }, 1000);
-            
+        } else {
+
+            toast.error("El email ya se encuentra registrado, intente nuevamente")
+
         }
 
     }
