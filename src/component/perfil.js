@@ -1,9 +1,7 @@
 import React from "react"
-import { FiEdit } from "react-icons/fi"
 import { useEffect, useState } from 'react'
 import { searchUsuarioById, saveImagen, updateField } from "../api/usuarioApi"
-import imguser from "../img/user.png"
-
+import { useNavigate } from 'react-router-dom'
 
 export default function Perfil(props) {
 
@@ -15,6 +13,8 @@ export default function Perfil(props) {
     const [imagen, setImagen] = useState()
     const [imagetemp, setImagenTemp] = useState()
     const [button, setButton] = useState(true)
+    const url_img = "http://localhost:8080/img/perfil/"
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -30,8 +30,8 @@ export default function Perfil(props) {
         setApellido(usuario.apellido)
         setEmail(usuario.email)
         setUsername(usuario.username)
-        
-        setImagenTemp(imguser)
+
+        setImagenTemp(url_img + usuario.username + ".jpg")
 
     }
 
@@ -39,13 +39,15 @@ export default function Perfil(props) {
         const objectURL = window.URL.createObjectURL(e)
         setImagenTemp(objectURL)
         setImagen(e)
+        document.getElementById("btn_actualiar_img").style.visibility = "visible"
     }
 
     const insertarImagen = async () => {
         saveImagen(username, imagen)
+        document.getElementById("btn_actualiar_img").style.visibility = "hidden"
     }
 
-    const handleButton = async(e,opc) => {
+    const handleButton = async (e, opc) => {
 
         let objeto = e.parentElement.parentElement
         let datos = {};
@@ -58,8 +60,10 @@ export default function Perfil(props) {
         if (button) {
             e.classList.replace("btn-outline-primary", "btn-outline-success")
             e.textContent = "Guardar"
-            objeto.querySelector('div').innerHTML = '<input type="text" class="form-control">'
+
+            objeto.querySelector('div').innerHTML = '<input type="text" className="form-control">'
             objeto.querySelector('label').style.display = 'none'
+
         } else {
             e.classList.replace("btn-outline-success", "btn-outline-primary")
             e.textContent = "Editar"
@@ -89,7 +93,11 @@ export default function Perfil(props) {
 
     }
 
+    const updatePassword = () => {
 
+        navigate('/password')
+
+    }
 
     return (
 
@@ -110,8 +118,8 @@ export default function Perfil(props) {
                                 <input type="file" id="file" className="file" accept="image/*" onChange={(e) => subirImagen(e.target.files[0])} />
                                 <span>Maximo 2mb</span>
                             </div>
-                            <br />
-                            <button className="btn btn-primary" onClick={() => insertarImagen()}>Actualizar Foto</button>
+                            <div></div>
+                            <button className="btn btn-primary" onClick={() => insertarImagen()} id="btn_actualiar_img">Actualizar Foto</button>
                         </div>
                         <div className="card-body">
                             <div className="table-responsive">
@@ -120,19 +128,19 @@ export default function Perfil(props) {
                                         <tr>
                                             <td>Nombres </td>
                                             <td><label >{nombre} </label><div></div></td>
-                                            <td>    
-                                            <button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target,1)}> Editar</button>
+                                            <td>
+                                                <button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target, 1)}> Editar</button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Apellidos </td>
                                             <td><label >{apellido} </label><div></div></td>
-                                            <td><button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target,2)}> Editar</button></td>
+                                            <td><button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target, 2)}> Editar</button></td>
                                         </tr>
                                         <tr>
                                             <td>Username </td>
                                             <td><label >{username} </label><div></div></td>
-                                            <td><button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target,3)}> Editar</button></td>
+                                            <td><button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target, 3)}> Editar</button></td>
                                         </tr>
 
                                         <tr>
@@ -141,7 +149,7 @@ export default function Perfil(props) {
                                         </tr>
                                         <tr>
                                             <td>Contraseña</td>
-                                            <td><FiEdit /></td>
+                                            <td><button type="button" className="btn btn-outline-primary" onClick={(e) => updatePassword(e.target)}> Editar</button></td>
                                         </tr>
 
                                     </tbody>

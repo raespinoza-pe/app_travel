@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate , Link} from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import useUser from '../hooks/useUser'
+import useUser from '../../hooks/useUser'
 
 export default function Login() {
 

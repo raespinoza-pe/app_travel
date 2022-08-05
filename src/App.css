@@ -106,3 +106,18 @@ td:nth-child(2) {
 button{
   margin: 5px;
 }
+
+#btn_actualiar_img{
+
+  visibility: hidden;
+
+}
+
+input{
+  margin  : 10px;
+}
+
+#up_password{
+  display: flex;
+  text-align: center;
+}

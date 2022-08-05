@@ -15,13 +15,13 @@ export default function Header() {
             <hr className="sidebar-divider my-0"></hr>
             <li className="nav-item">
 
-                <Link to="" className="nav-link" href="charts.html">
+                <Link to="/usuario" className="nav-link" href="charts.html">
                 <IoIosContact/>
                 <span> Perfil</span></Link>
-                <Link to="" className="nav-link" href="charts.html">
+                <Link to="/destino" className="nav-link" href="charts.html">
                 <IoIosAirplane/>
                 <span> Destinos</span></Link>
-                <Link to="" className="nav-link" href="charts.html">
+                <Link to="/destino" className="nav-link" href="charts.html">
                 <IoIosGlobe/>
                 <span> Lugares Turisticos</span></Link>
                 
