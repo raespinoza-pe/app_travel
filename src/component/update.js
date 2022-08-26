@@ -1,7 +1,7 @@
 import React from "react"
-import { } from "../api/usuarioApi"
 import { useNavigate } from 'react-router-dom'
 import { toast, Toaster } from "react-hot-toast"
+import { updatePassword } from "../api/usuarioApi"
 
 export default function Update() {
 
@@ -12,7 +12,6 @@ export default function Update() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        let url = "http://localhost:8080/api/usuarios/password"
         let password = document.getElementById('txPassword').value
         let newPassword = document.getElementById('txtNewPassword').value
         let valpassword = document.getElementById('txtValPassword').value
@@ -28,18 +27,7 @@ export default function Update() {
         datos.password = password
         datos.username = newPassword
 
-        const request = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.token
-
-            },
-            body: JSON.stringify(datos)
-        });
-
-        const respuesta = await request.text()
+        const respuesta = await updatePassword(datos)
 
         if (respuesta != 'fail') {
             toast.success("Contraseña actualizado correctamente")

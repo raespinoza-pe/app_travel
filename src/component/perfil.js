@@ -103,58 +103,56 @@ export default function Perfil(props) {
 
         <div className="container-fluid">
             <h1 className="h3 mb-4 text-gray-800">PERFIL</h1>
-            <div className="row">
-                <div className="col-lg-6">
-                    <div className="card shadow mb-6">
-                        <div className="card-header py-3">
-                            <h6 className="m-0 font-weight-bold text-primary">INFORMACIÓN DE LA CUENTA</h6>
+            <div className="col-lg-6">
+                <div className="card shadow mb-6">
+                    <div className="card-header py-3">
+                        <h6 className="m-0 font-weight-bold text-primary">INFORMACIÓN DE LA CUENTA</h6>
+                    </div>
+                    <div className="card-body text-center">
+                        <img src={imagetemp} alt="foto_perfil" className="rounded mx-auto d-block" width="150px" height="150px" />
+                        <div className="file-input">
+                            <label htmlFor="file">
+                                <i className="fa fa-2x fa-camera"></i>
+                            </label>
+                            <input type="file" id="file" className="file" accept="image/*" onChange={(e) => subirImagen(e.target.files[0])} />
+                            <span>Maximo 2mb</span>
                         </div>
-                        <div className="card-body text-center">
-                            <img src={imagetemp} alt="foto_perfil" className="rounded mx-auto d-block" width="150px" height="150px" />
-                            <div className="file-input">
-                                <label htmlFor="file">
-                                    <i className="fa fa-2x fa-camera"></i>
-                                </label>
-                                <input type="file" id="file" className="file" accept="image/*" onChange={(e) => subirImagen(e.target.files[0])} />
-                                <span>Maximo 2mb</span>
-                            </div>
-                            <div></div>
-                            <button className="btn btn-primary" onClick={() => insertarImagen()} id="btn_actualiar_img">Actualizar Foto</button>
-                        </div>
-                        <div className="card-body">
-                            <div className="table-responsive">
-                                <table className="table" id="dataTable" width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td>Nombres </td>
-                                            <td><label >{nombre} </label><div></div></td>
-                                            <td>
-                                                <button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target, 1)}> Editar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Apellidos </td>
-                                            <td><label >{apellido} </label><div></div></td>
-                                            <td><button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target, 2)}> Editar</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Username </td>
-                                            <td><label >{username} </label><div></div></td>
-                                            <td><button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target, 3)}> Editar</button></td>
-                                        </tr>
+                        <div></div>
+                        <button className="btn btn-primary" onClick={() => insertarImagen()} id="btn_actualiar_img">Actualizar Foto</button>
+                    </div>
+                    <div className="card-body">
+                        <div className="table-responsive">
+                            <table className="table" id="dataTable" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td>Nombres </td>
+                                        <td><label >{nombre} </label><div></div></td>
+                                        <td>
+                                            <button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target, 1)}> Editar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apellidos </td>
+                                        <td><label >{apellido} </label><div></div></td>
+                                        <td><button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target, 2)}> Editar</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Username </td>
+                                        <td><label >{username} </label><div></div></td>
+                                        <td><button type="button" className="btn btn-outline-primary" onClick={(e) => handleButton(e.target, 3)}> Editar</button></td>
+                                    </tr>
 
-                                        <tr>
-                                            <td>Email </td>
-                                            <td>{email}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Contraseña</td>
-                                            <td><button type="button" className="btn btn-outline-primary" onClick={(e) => updatePassword(e.target)}> Editar</button></td>
-                                        </tr>
+                                    <tr>
+                                        <td>Email </td>
+                                        <td>{email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Contraseña</td>
+                                        <td><button type="button" className="btn btn-outline-primary" onClick={(e) => updatePassword(e.target)}> Editar</button></td>
+                                    </tr>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

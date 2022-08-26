@@ -2,12 +2,13 @@ import React from "react"
 import Headers from '../../component/header'
 import Footer from '../../component/footer'
 import Banner from '../../component/banner'
-import DestinoList from '../../component/destinoList'
-import { useEffect } from 'react'
+import DestinoSave from '../../component/destinoSave'
 import useUser from '../../hooks/useUser'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
-const Destino = () => { 
+
+const SaveDestino = () => { 
 
     const { getToken } = useUser()
     const navigate = useNavigate()
@@ -20,6 +21,7 @@ const Destino = () => {
         if (!getToken) { navigate('/login') }
     }
 
+
     return (
 
         <>
@@ -29,7 +31,7 @@ const Destino = () => {
                 <div id="content-wrapper" className="d-flex flex-column">
                     <div id="content">
                         <Banner />
-                        <DestinoList />
+                        <DestinoSave />
                     </div>
                     <Footer />
                 </div>
@@ -42,4 +44,4 @@ const Destino = () => {
 
 }
 
-export default Destino;
+export default SaveDestino;

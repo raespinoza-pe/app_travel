@@ -41,7 +41,7 @@ const Register = () => {
             return
         }
 
-        let existUsuario = await buscarEmail(datos.email);
+        let existUsuario = await buscarEmail(datos.email)
 
         if (existUsuario === "no") {
             toast.success('Email registrado correctamente')

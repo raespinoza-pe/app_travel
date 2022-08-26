@@ -1,0 +1,19 @@
+.card button{
+    border-radius: 5px;
+    display: right;
+    max-width: 200px;
+    font-style: normal;
+}
+
+.centrar_left {
+    text-align: right;
+    margin-top: 5px;
+    margin-right: 25px;
+}
+
+.centrar_center {
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+

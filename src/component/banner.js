@@ -1,12 +1,32 @@
 import React from "react"
 import {Link} from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import imguser from "../img/user.png"
+import { searchUsuarioById } from "../api/usuarioApi"
 
 export default function Banner() {
 
     const navigate = useNavigate()
     const email = localStorage.getItem('email')
+    const id = localStorage.getItem('id')
+    const [imagetemp, setImagenTemp] = useState()
+    const url_img = "http://localhost:8080/img/perfil/"
+
+    useEffect(() => {
+
+        obtenerImagen()
+
+    }, []);
+
+    const obtenerImagen = async () => {
+
+        let usuario = await searchUsuarioById(id)
+        setImagenTemp(url_img + usuario.username + ".jpg")
+
+    }
+
+
 
     const logout = () => {
 
@@ -27,7 +47,7 @@ export default function Banner() {
                     <Link to="" className="nav-link dropdown-toggle" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span className="mr-2 d-none d-lg-inline text-gray-600 small">{email}</span>
-                        <img className="img-profile rounded-circle" src={imguser} alt="" />
+                        <img className="img-profile rounded-circle" src={imagetemp} alt="" />
                     </Link>
                     <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">

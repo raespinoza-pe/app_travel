@@ -3,6 +3,9 @@ import { Link } from "react-router-dom"
 import { IoIosAirplane, IoIosGlobe, IoIosContact } from "react-icons/io"
 
 export default function Header() {
+
+    const id = localStorage.getItem('id')
+
     return (
 
         <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -15,13 +18,13 @@ export default function Header() {
             <hr className="sidebar-divider my-0"></hr>
             <li className="nav-item">
 
-                <Link to="/usuario" className="nav-link" href="charts.html">
+                <Link to="/usuario" className="nav-link" >
                 <IoIosContact/>
                 <span> Perfil</span></Link>
-                <Link to="/destino" className="nav-link" href="charts.html">
+                <Link to="/destino" className="nav-link" >
                 <IoIosAirplane/>
                 <span> Destinos</span></Link>
-                <Link to="/destino" className="nav-link" href="charts.html">
+                <Link to="/destino" className="nav-link" >
                 <IoIosGlobe/>
                 <span> Lugares Turisticos</span></Link>
                 

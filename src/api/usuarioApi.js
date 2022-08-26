@@ -136,3 +136,22 @@ export async function updateField (datos)  {
     })
     
 }
+
+export async function updatePassword (datos)  {
+
+    const url = REACT_APP_API_URL + "usuarios/password"
+
+    const request = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.token
+
+        },
+        body: JSON.stringify(datos)
+    });
+    
+    return await request.text()
+    
+}
