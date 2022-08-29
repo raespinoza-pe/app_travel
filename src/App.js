@@ -5,6 +5,7 @@ import Usuario from './page/usuario/usuario'
 import Password from './page/usuario/password'
 import Destino from './page/destino/index'
 import SaveDestino from './page/destino/save'
+import UpdateDestino from './page/destino/update'
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./context/UserContex";
@@ -21,9 +22,8 @@ function App() {
           <Route path="/usuario" element={<Usuario />}></Route>
           <Route path="/password" element={<Password />}></Route>
           <Route path="/destino" element={<Destino />}></Route>
-          <Route path="destino">
-            <Route path="new" element={<SaveDestino />} />
-          </Route>
+          <Route path="/destino/new" element={<SaveDestino />}></Route>
+          <Route path="/destino/:id" element={<UpdateDestino />} ></Route>
         </Routes>
       </BrowserRouter>
     </UserContextProvider>

@@ -49,7 +49,7 @@ export default function Banner() {
                         <span className="mr-2 d-none d-lg-inline text-gray-600 small">{email}</span>
                         <img className="img-profile rounded-circle" src={imagetemp} alt="" />
                     </Link>
-                    <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                    <div className="dropdown-menu"
                         aria-labelledby="userDropdown">
                         <Link to="" className="dropdown-item" >
                             <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -69,6 +69,7 @@ export default function Banner() {
                             Logout
                         </Link>
                     </div>
+                    
                 </li>
             </ul>
         </nav>

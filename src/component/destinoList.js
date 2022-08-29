@@ -36,7 +36,7 @@ export default function DestinoList() {
 
     const updateDestino = async (id) => {
 
-        console.log("hola")
+        navigate("/destino/"+id)
     }
 
 

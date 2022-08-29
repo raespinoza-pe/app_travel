@@ -5,7 +5,6 @@ import { AiFillSave } from "react-icons/ai"
 import { useState } from 'react'
 import { saveDestinos } from "../api/destinoApi"
 import { useNavigate } from "react-router-dom"
-import { ImCancelCircle } from "react-icons/im"
 
 export default function DestinoSave() {
 
@@ -34,7 +33,6 @@ export default function DestinoSave() {
         navigate('/destino') 
 
     }
-
 
     return (
         <div className="container-fluid">
@@ -79,9 +77,7 @@ export default function DestinoSave() {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="centrar_left">
-                                <button type="submit" className="btn btn-success"><AiFillSave /> Guardar destino</button>
-                            </div>
+                            <div className="centrar_left"><button type="submit" className="btn btn-success"><AiFillSave /> Guardar destino</button></div>
                         </form>
                     </div>
                     <br />
