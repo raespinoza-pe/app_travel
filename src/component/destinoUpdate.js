@@ -2,10 +2,9 @@ import React from "react"
 import '../css/sb-admin-2.min.css'
 import '../css/destino.css'
 import { useState , useEffect} from 'react'
-import { saveDestinos } from "../api/destinoApi"
 import { useNavigate , useLocation } from "react-router-dom"
 import { GrUpdate } from "react-icons/gr"
-import { searchDestinosbyId } from "../api/destinoApi"
+import { searchDestinosbyId, updateDestinosbyId } from "../api/destinoApi"
 
 export default function DestinoSave() {
 
@@ -18,7 +17,6 @@ export default function DestinoSave() {
     const email = localStorage.getItem('email')
     const navigate = useNavigate()
     const { pathname } = useLocation()
-    const [destinos, setDestinos] = useState([])
 
     const id_destino = pathname.split('/destino/')[1]
 
@@ -30,7 +28,11 @@ export default function DestinoSave() {
     const obtenerDestinos = async () => {
         
         let destinoList = await searchDestinosbyId(id_destino)
-        setDestinos(destinoList)
+        setNombre(destinoList.nombre)
+        setDescripion(destinoList.descripcion)  
+        setDia(destinoList.dia_viaje)
+        setHora(destinoList.hora_viaje)
+        setPresupuesto(destinoList.presupuesto)
 
     }
 
@@ -38,6 +40,7 @@ export default function DestinoSave() {
         e.preventDefault();
         let datos = {}
         let usuario = {}
+        datos.id = id_destino
         datos.nombre = nombre
         datos.descripcion = descripion
         datos.dia_viaje = dia
@@ -46,7 +49,7 @@ export default function DestinoSave() {
         usuario.id = id
         usuario.email = email
         datos.id_usuario = usuario
-        await saveDestinos(datos)
+        await updateDestinosbyId(datos)
         navigate('/destino')
     }
 
@@ -71,22 +74,22 @@ export default function DestinoSave() {
                                             <th>PRESUPUESTO</th>
                                         </tr>
                                         <tr>
-                                            <td><input type="text" className="form-control form-control-user" id="txtNombre" required onChange={({ target }) => setNombre(target.value)} placeholder= {destinos.nombre}></input></td>
+                                            <td><input type="text" className="form-control form-control-user" id="txtNombre" required onChange={({ target }) => setNombre(target.value)} value= {nombre || ''}></input></td>
                                             <td><input type="text" className="form-control form-control-user" id="txtDescripcion"
-                                                required maxLength="225" onChange={({ target }) => setDescripion(target.value)} placeholder= {destinos.descripcion}></input></td>
+                                                required maxLength="225" onChange={ ({ target }) => setDescripion(target.value) } value= {descripion|| ''}></input></td>
                                             <td> <div className="input-group">
                                                 <input type="number" className="form-control form-control-user" id="txtDiaViaje"
-                                                    placeholder= {destinos.dia_viaje} required max="30" onChange={({ target }) => setDia(Number(target.value))} ></input>
+                                                    value= {Number(dia) || 0 } required max="30" onChange={ ({ target }) => setDia(Number(target.value)) } ></input>
                                                 <div className="input-group-prepend"><span className="input-group-text" >Dias</span></div>
                                             </div></td>
                                             <td> <div className="input-group">
                                                 <input type="number" className="form-control form-control-user" id="txtHoraViaje"
-                                                    placeholder= {destinos.hora_viaje}  required max="23" onChange={({ target }) => setHora(Number(target.value))}></input>
+                                                    value= {Number(hora) || 0 }  required max="23" onChange={({ target }) => setHora(Number(target.value))}></input>
                                                 <div className="input-group-prepend"><span className="input-group-text" >Horas</span></div>
                                             </div></td>
                                             <td><div className="input-group">
                                                 <input type="number" className="form-control form-control-user" id="txtPresupuesto"
-                                                    placeholder={destinos.presupuesto}  required max="1000" onChange={({ target }) => setPresupuesto(target.value)}></input>
+                                                    value={presupuesto || ''}  required max="1000" onChange={({ target }) => setPresupuesto(target.value)}></input>
                                                 <div className="input-group-prepend"><span className="input-group-text" >Soles</span></div>
                                             </div></td>
                                         </tr>

@@ -65,3 +65,19 @@ export async function searchDestinosbyId(id) {
     return await response.json()
     
 }
+
+export async function updateDestinosbyId(datos) {
+
+    let url = REACT_APP_API_URL + "destinos"
+
+    await fetch(url, {
+        "method": "PUT",
+        "headers": {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.token
+        },
+        body: JSON.stringify(datos)
+    })
+    
+}
