@@ -5,7 +5,7 @@ import Banner from '../../component/banner'
 import DestinoList from '../../component/destinoList'
 import { useEffect } from 'react'
 import useUser from '../../hooks/useUser'
-import { Outlet, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 
 const Destino = () => { 
 

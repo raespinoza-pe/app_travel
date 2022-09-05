@@ -1,9 +1,10 @@
 import React from "react"
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import imguser from "../img/user.png"
 import { searchUsuarioById } from "../api/usuarioApi"
+import Button from 'react-bootstrap/Button'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 export default function Banner() {
 
@@ -20,12 +21,9 @@ export default function Banner() {
     }, []);
 
     const obtenerImagen = async () => {
-
         let usuario = await searchUsuarioById(id)
         setImagenTemp(url_img + usuario.username + ".jpg")
-
     }
-
 
 
     const logout = () => {
@@ -44,32 +42,23 @@ export default function Banner() {
             <ul className="navbar-nav ml-auto">
                 <div className="topbar-divider d-none d-sm-block"></div>
                 <li className="nav-item dropdown no-arrow">
-                    <Link to="" className="nav-link dropdown-toggle" id="userDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span className="mr-2 d-none d-lg-inline text-gray-600 small">{email}</span>
-                        <img className="img-profile rounded-circle" src={imagetemp} alt="" />
-                    </Link>
-                    <div className="dropdown-menu"
-                        aria-labelledby="userDropdown">
-                        <Link to="" className="dropdown-item" >
-                            <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Profile
-                        </Link>
-                        <Link to="" className="dropdown-item">
-                            <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Settings
-                        </Link>
-                        <Link to="" className="dropdown-item" >
-                            <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Activity Log
-                        </Link>
-                        <div className="dropdown-divider"></div>
-                        <Link to="" className="dropdown-item" data-toggle="modal" data-target="#logoutModal" onClick={logout}>
-                            <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
-                        </Link>
-                    </div>
-                    
+
+
+                    <Dropdown>
+                        <Dropdown.Toggle variant="Info" id="dropdown-button-dark"  size="sm">
+                            <Link to="" className="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span className="mr-2 d-none d-lg-inline text-gray-600 small">{email}</span>
+                                <img className="img-profile rounded-circle" src={imagetemp} alt="" />
+                            </Link>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#">Profile</Dropdown.Item>
+                            <Dropdown.Item href="#">Activity Log</Dropdown.Item>
+                            <Dropdown.Item href="#" onClick={logout}>Logout</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+
                 </li>
             </ul>
         </nav>

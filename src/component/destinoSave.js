@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { saveDestinos } from "../api/destinoApi"
 import { useNavigate } from "react-router-dom"
 import { ImCancelCircle } from "react-icons/im"
+import Button from 'react-bootstrap/Button'
 
 export default function DestinoSave() {
 
@@ -33,6 +34,10 @@ export default function DestinoSave() {
         await saveDestinos(datos)   
         navigate('/destino') 
 
+    }
+
+    const regresar = () => {
+        navigate('/destino') 
     }
 
 
@@ -80,6 +85,7 @@ export default function DestinoSave() {
                                 </table>
                             </div>
                             <div className="centrar_left">
+                                <Button variant="primary" onClick={() =>regresar()}> <ImCancelCircle /> Regresar</Button>
                                 <button type="submit" className="btn btn-success"><AiFillSave /> Guardar destino</button>
                             </div>
                         </form>

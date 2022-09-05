@@ -2,6 +2,7 @@ import React from "react"
 import { useEffect, useState } from 'react'
 import { searchUsuarioById, saveImagen, updateField } from "../api/usuarioApi"
 import { useNavigate } from 'react-router-dom'
+import { AiOutlineCamera } from "react-icons/ai"
 
 export default function Perfil(props) {
 
@@ -112,7 +113,7 @@ export default function Perfil(props) {
                         <img src={imagetemp} alt="foto_perfil" className="rounded mx-auto d-block" width="150px" height="150px" />
                         <div className="file-input">
                             <label htmlFor="file">
-                                <i className="fa fa-2x fa-camera"></i>
+                                <AiOutlineCamera />
                             </label>
                             <input type="file" id="file" className="file" accept="image/*" onChange={(e) => subirImagen(e.target.files[0])} />
                             <span>Maximo 2mb</span>
