@@ -1,3 +1,4 @@
+import Home from './page/index'
 import Login from './page/usuario/login'
 import Register from './page/usuario/register'
 import Forgot from './page/usuario/forgot'
@@ -15,7 +16,7 @@ function App() {
     <UserContextProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/forgot" element={<Forgot />}></Route>
